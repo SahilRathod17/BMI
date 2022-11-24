@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'my_CardChild.dart';
 import 'my_Card.dart';
-
-// ignore: constant_identifier_names
-const BottomBorder = 70.0;
-// ignore: constant_identifier_names
-const activeCardColor = Color(0xFFc6fad6);
-const LitePink = Color(0xFFF06292);
-const purpule = Color(0xFFab96db);
-const inactiveCardColor = Color(0xFF92ddc8);
+import 'constants.dart';
 
 enum Gender {
   Male,
@@ -48,6 +41,7 @@ class _InputPageState extends State<InputPage> {
   // }
 
   Gender? selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -56,57 +50,90 @@ class _InputPageState extends State<InputPage> {
         title: const Text(
           "BMI CALCULATOR",
           style: TextStyle(
-              color: LitePink,
-              fontFamily: 'Zen_Kurenaido',
-              fontWeight: FontWeight.bold),
+            color: kLitePink,
+            fontFamily: 'Zen_Kurenaido',
+            fontWeight: FontWeight.w900,
+          ),
         ),
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
               child: Row(
             // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: MyCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.Male;
                     });
                   },
-                  child: MyCard(
-                    colour: selectedGender == Gender.Male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: CardChild(
-                      icon: FontAwesomeIcons.mars,
-                      lable: "MALE",
-                    ),
+                  colour: selectedGender == Gender.Male
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
+                  cardChild: CardChild(
+                    icon: FontAwesomeIcons.mars,
+                    lable: "MALE",
                   ),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: MyCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.Female;
                     });
                   },
-                  child: MyCard(
-                    colour: selectedGender == Gender.Female
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: CardChild(
-                        icon: FontAwesomeIcons.venus, lable: "FEMALE"),
-                  ),
+                  colour: selectedGender == Gender.Female
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
+                  cardChild:
+                      CardChild(icon: FontAwesomeIcons.venus, lable: "FEMALE"),
                 ),
               ),
             ],
           )),
           Expanded(
             child: MyCard(
-              colour: inactiveCardColor,
+              colour: kInactiveCardColor,
+              // ignore: prefer_const_literals_to_create_immutables
+              cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "HEIGHT",
+                      style: kLabelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: kNumbersLabel,
+                        ),
+                        Text(
+                          "cm",
+                          style: kLabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        activeColor: kPurpule,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        }),
+                  ]),
             ),
           ),
           Expanded(
@@ -114,18 +141,18 @@ class _InputPageState extends State<InputPage> {
             // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
               Expanded(
-                child: MyCard(colour: inactiveCardColor),
+                child: MyCard(colour: kInactiveCardColor),
               ),
               Expanded(
-                child: MyCard(colour: inactiveCardColor),
+                child: MyCard(colour: kInactiveCardColor),
               ),
             ],
           )),
           Container(
-            color: LitePink,
+            color: kLitePink,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: BottomBorder,
+            height: kBottomBorder,
             child: const Center(
               child: Text(
                 "CALCULATE",

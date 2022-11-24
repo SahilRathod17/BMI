@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class CardChild extends StatelessWidget {
   final IconData icon;
@@ -8,8 +9,6 @@ class CardChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const purpule = Color(0xFFab96db);
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       // ignore: prefer_const_literals_to_create_immutables
@@ -18,7 +17,7 @@ class CardChild extends StatelessWidget {
         Icon(
           icon,
           size: 85,
-          color: purpule,
+          color: const Color(0xFFab96db),
         ),
         // ignore: prefer_const_constructors
         SizedBox(
@@ -26,10 +25,7 @@ class CardChild extends StatelessWidget {
         ),
         Text(
           lable,
-          style: TextStyle(
-            color: purpule,
-            fontSize: 20,
-          ),
+          style: kLabelTextStyle,
         ),
       ],
     );
