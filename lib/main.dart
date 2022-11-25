@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/input_page.dart';
 import 'package:flutter/services.dart';
-
 void main(List<String> args) {
   runApp(BMI());
 }
