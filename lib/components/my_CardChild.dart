@@ -5,7 +5,7 @@ class CardChild extends StatelessWidget {
   final IconData icon;
   final String lable;
 
-  const CardChild({super.key, required this.icon, required this.lable});
+  const CardChild({required this.icon, required this.lable});
 
   @override
   Widget build(BuildContext context) {

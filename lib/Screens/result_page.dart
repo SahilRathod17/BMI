@@ -49,8 +49,8 @@ class Result_Page extends StatelessWidget {
             child: Container(
               // ignore: prefer_const_constructors
               child: Text(
-                textAlign: TextAlign.center,
                 'YOUR RESULT',
+                textAlign: TextAlign.center,
                 style: kResultTextStyle,
               ),
             ),

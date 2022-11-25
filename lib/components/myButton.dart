@@ -6,7 +6,6 @@ class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const MyButton({
-    super.key,
     required this.icon,
     required this.onPressed,
   });
