@@ -10,4 +10,4 @@ The Body Mass Index (BMI) Calculator can be used to calculate BMI value and corr
 
 ## Motivation 
 
-londonappbrewery[https://github.com/londonappbrewery/bmi-calculator-flutter]
+[londonappbrewery](https://github.com/londonappbrewery/bmi-calculator-flutter)
