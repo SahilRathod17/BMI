@@ -18,3 +18,29 @@ const kNumbersLabel = TextStyle(
   fontSize: 55.0,
   fontWeight: FontWeight.w900,
 );
+
+const kResultTextStyle = TextStyle(
+  fontFamily: 'Zen_Kurenaido',
+  fontSize: 45.0,
+  color: kLitePink,
+  fontWeight: FontWeight.w900,
+);
+
+const kResutLabelstyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Zen_Kurenaido',
+);
+
+const kBMIResultStyle = TextStyle(
+  fontSize: 100.0,
+  color: kLitePink,
+  fontFamily: 'Zen_Kurenaido',
+);
+
+const kResultStyle = TextStyle(
+  color: kLitePink,
+  fontSize: 22.0,
+  fontFamily: 'Zen_Kurenaido',
+);

@@ -1,9 +1,12 @@
 // ignore_for_file: sort_child_properties_last;, prefer_const_constructors
+import 'package:bmi/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'my_CardChild.dart';
 import 'my_Card.dart';
 import 'constants.dart';
+import 'myButton.dart';
+import 'bottom_button.dart';
 
 enum Gender {
   Male,
@@ -42,6 +45,8 @@ class _InputPageState extends State<InputPage> {
 
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -123,16 +128,22 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                    Slider(
-                        value: height.toDouble(),
-                        min: 120.0,
-                        max: 220.0,
-                        activeColor: kPurpule,
-                        onChanged: (double newValue) {
-                          setState(() {
-                            height = newValue.round();
-                          });
-                        }),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      ),
+                      child: Slider(
+                          value: height.toDouble(),
+                          min: 120.0,
+                          max: 220.0,
+                          activeColor: kPurpule,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          }),
+                    ),
                   ]),
             ),
           ),
@@ -141,35 +152,103 @@ class _InputPageState extends State<InputPage> {
             // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
               Expanded(
-                child: MyCard(colour: kInactiveCardColor),
+                child: MyCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        Text(
+                          "WEIGHT",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumbersLabel,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            MyButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            MyButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    colour: kInactiveCardColor),
               ),
               Expanded(
-                child: MyCard(colour: kInactiveCardColor),
+                child: MyCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        Text(
+                          "AGE",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumbersLabel,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            MyButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                }),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            MyButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                })
+                          ],
+                        ),
+                      ],
+                    ),
+                    colour: kInactiveCardColor),
               ),
             ],
           )),
-          Container(
-            color: kLitePink,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomBorder,
-            child: const Center(
-              child: Text(
-                "CALCULATE",
-                style: TextStyle(
-                  color: Color(0xFFffffd3),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'Zen_Kurenaido',
-                ),
-              ),
-            ),
+          BottomButton(
+            title: 'CALCULATE',
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Result_Page()));
+            },
           )
         ],
       ),
     );
   }
 }
+
 
 // Container(
 //         margin: const EdgeInsets.all(15.0),
