@@ -1,11 +1,21 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bmi/components/bottom_button.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'my_Card.dart';
+import '../constants.dart';
+import '../components/my_Card.dart';
 
+// ignore: camel_case_types
 class Result_Page extends StatelessWidget {
-  const Result_Page({Key? key}) : super(key: key);
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+  Result_Page(
+      {required this.bmiResult,
+      required this.interpretation,
+      required this.resultText});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +56,7 @@ class Result_Page extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 6,
             child: MyCard(
               colour: kActiveCardColor,
               cardChild: Column(
@@ -55,22 +65,27 @@ class Result_Page extends StatelessWidget {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   Text(
-                    'NORMAL',
+                    resultText,
                     style: kResutLabelstyle,
                   ),
                   Text(
-                    '17.5',
+                    bmiResult,
                     style: kBMIResultStyle,
                   ),
                   Text(
+                    interpretation,
                     textAlign: TextAlign.center,
-                    'Your BMI result is quit low, you should eat more!',
                     style: kResultStyle,
                   )
                 ],
               ),
             ),
           ),
+          BottomButton(
+              title: 'RE-CALCULATE',
+              onTap: () {
+                Navigator.pop(context);
+              })
         ],
       ),
     );

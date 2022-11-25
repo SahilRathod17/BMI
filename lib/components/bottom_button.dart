@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
   final VoidCallback onTap;
