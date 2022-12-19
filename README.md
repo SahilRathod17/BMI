@@ -1,16 +1,13 @@
-# bmi
+# BMI 
 
-A new Flutter project.
+Body Mass Index - BMI
 
-## Getting Started
+## Calculate your Body Mass Index
 
-This project is a starting point for a Flutter application.
+Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.
 
-A few resources to get you started if this is your first Flutter project:
+The Body Mass Index (BMI) Calculator can be used to calculate BMI value and corresponding weight status while taking age into consideration. Use the "Metric Units" tab for the International System of Units or the "Other Units" tab to convert units into either US or metric units. Note that the calculator also computes the Ponderal Index in addition to BMI.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Motivation 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[londonappbrewery](https://github.com/londonappbrewery/bmi-calculator-flutter)
